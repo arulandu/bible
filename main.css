@@ -1,0 +1,66 @@
+*, body, html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+.panel {
+    margin-top: 4rem;
+}
+
+.panel p {
+    margin-top: 0.5rem;
+}
+
+.panel #search {
+    margin-top: 1rem;
+}
+
+#search {
+    border-bottom: 1px solid;
+    border-radius: 2px;
+    padding: 0.25rem;
+    width: 100%;
+
+}
+
+main {
+    width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.panel {
+    text-align: center;
+}
+
+.display {
+    margin-top: 4rem;
+    width: 100%;
+}
+
+.display .heading {
+    /* font-weight: bold; */
+    display: block;
+    text-decoration: underline;
+}
+
+.display mark {
+    background-color: transparent;
+    color: #A51C30;
+    text-decoration: none;
+}
+
+.display .result {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.result .ref {
+    font-weight: lighter;
+    font-weight: bold;
+}

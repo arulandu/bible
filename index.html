@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A fast, fuzzy search for the Catholic bible (NRSVCE).">
+    <title>Bible</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <main>
+        <div class="panel">
+            <input id="search" type="text" placeholder="Search the NRSVCE Bible here!"></input>
+            <p>By <a gi>Alvan Arulandu</a></p>
+        </div>
+        <div id="display" class="display"></div>
+    </main>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0" defer></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/nextapps-de/flexsearch@0.7.41/dist/flexsearch.bundle.min.js"></script> -->
+    <script src="./lib/uFuzzy.iife.min.js"></script>
+
+    <script src="index.js" defer></script>
+</body>
+</html>
