@@ -5,14 +5,6 @@ const main = async () => {
   const res = await fetch("/data/main.json");
   const data = await res.json();
 
-  const options = {
-    isCaseSensitive: false,
-    minMatchCharLength: 2,
-    includeScore: true,
-    useExtendedSearch: false,
-    keys: ["book", "text"],
-  };
-
   const docs = data["bible"]
     .map((book) =>
       book["chapters"].map((ch) =>
