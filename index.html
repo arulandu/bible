@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fast, fuzzy search for the Catholic bible (NRSVCE).">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A fast, fuzzy search for the Catholic bible (NRSVCE)."
+    />
     <title>Bible</title>
-    <link rel="stylesheet" href="main.css">
-</head>
-<body>
+    <link rel="stylesheet" href="main.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📿</text></svg>"
+    />
+  </head>
+  <body>
     <main>
-        <div class="panel">
-            <input id="search" type="text" placeholder="Search the NRSVCE Bible here!"></input>
-            <p>By <a gi>Alvan Arulandu</a></p>
+      <div class="panel">
+        <div class="search">
+          <label class="logo" for="search">📿</label>
+          <input
+            id="search"
+            type="text"
+            placeholder=" Search the NRSVCE Bible"
+          />
+          <span class="underline"></span>
         </div>
-        <div id="display" class="display"></div>
+        <p>
+          By <a href="https://arulandu.com" target="_blank">Alvan Arulandu*</a>
+        </p>
+      </div>
+      <div id="display" class="display"></div>
     </main>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0" defer></script> -->
@@ -21,5 +38,5 @@
     <script src="./lib/uFuzzy.iife.min.js"></script>
 
     <script src="index.js" defer></script>
-</body>
+  </body>
 </html>

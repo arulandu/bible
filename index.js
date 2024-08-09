@@ -40,14 +40,7 @@ const main = async () => {
   });
   console.log(docs);
 
-  //   const fuse = new Fuse(docs, options);
-
-  //   const index = new FlexSearch.Document();
-  //   for (let i = 0; i < docs.length; i++) {
-  //     index.add(i, docs[i]);
-  //   }
-
-  const update = async (query) => {
+  const update = async (query, mx=100) => {
     if(query.length == 0){
         display.innerHTML = ""
         return
@@ -59,7 +52,7 @@ const main = async () => {
     console.log(order, info, idxs);
     display.innerHTML = query;
 
-    display.innerHTML = order.slice(0,5).map((o) => {
+    display.innerHTML = order.slice(0,mx).map((o) => {
       const x = docs[info.idx[o]];
       let h = uFuzzy.highlight(x["text"], info.ranges[o]).split('')
       let c = 0;
@@ -91,21 +84,6 @@ const main = async () => {
       }
       return `<div class="result"><p class="ref">${x["book"]} ${x["chapter"]}:${x["verse"]}</p><p class="content">${h}</p></div>`;
     }).join('');
-
-    // let s = 0;
-    // for(let i = 0; i < 100000000; i++){
-    //     s += i
-    // }
-
-    // console.log("update", val, "|",s)
-
-    // const res = fuse.search(val);
-    // const res = index.search(query, 5);
-    // display.innerHTML = res.slice(0, 5).map((i) => {
-    //   const x = i["item"];
-    //   console.log(x);
-    //   return `<div class="chapter"><h3>${x["book"]} ${x["chapter"]}:${x["verse"]}</h3><p>${x["text"]}</p></div>`;
-    // });
   };
 
   search.addEventListener("input", (e) => {

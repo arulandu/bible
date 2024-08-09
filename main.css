@@ -1,3 +1,8 @@
+:root {
+    --accent-color: #a51c30;
+    --bg-color: #fef8ec;
+}
+
 *, body, html {
     box-sizing: border-box;
     margin: 0;
@@ -5,6 +10,10 @@
     outline: none;
     border: none;
     background-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
 }
 
 .panel {
@@ -15,20 +24,70 @@
     margin-top: 0.5rem;
 }
 
-.panel #search {
-    margin-top: 1rem;
+.panel a {
+    text-decoration: none;
+    color: var(--accent-color);
+    animation: sparkle 3s infinite;
 }
 
-#search {
-    border-bottom: 1px solid;
+@keyframes sparkle {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.search {
+    height: 2rem;
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex: row wrap;
+    align-items: center; 
+}
+.search .logo {
+    margin-right: 0.1rem;
+}
+
+.search #search {
     border-radius: 2px;
     padding: 0.25rem;
     width: 100%;
+    height: 100%;    
+}
 
+#search::placeholder {
+    opacity: 50%;
+    color: black;
+}
+
+.search .underline {
+    transition: 0.2s ease-in;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+}
+
+#search:focus + .underline {
+    background-color: var(--accent-color);
 }
 
 main {
-    width: 32rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 34rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -50,7 +109,7 @@ main {
 
 .display mark {
     background-color: transparent;
-    color: #A51C30;
+    color: var(--accent-color);
     text-decoration: none;
 }
 
