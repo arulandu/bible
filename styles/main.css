@@ -96,8 +96,17 @@ main {
     text-align: center;
 }
 
+.status {
+    margin-top: 3.5rem;
+    opacity: 50%;
+}
+
+.status .dt {
+    opacity: 50%;
+}
+
 .display {
-    margin-top: 4rem;
+    margin-top: 0.5rem;
     width: 100%;
 }
 

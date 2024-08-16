@@ -1,5 +1,6 @@
 const main = async () => {
   const search = document.getElementById("search");
+  const searchStatus = document.getElementById("search-status")
   const display = document.getElementById("display");
 
   const res = await fetch("/data/main.json");
@@ -31,7 +32,7 @@ const main = async () => {
     intraIns: 1,
   });
 
-  let indxs, info, order, results;
+  let idxs, info, order, results;
   const expandText = ['Chapter', 'Verse']
 
   const toggle = (ind) => {
@@ -114,10 +115,17 @@ const main = async () => {
   };
 
   const update = async (query, mx = 100) => {
+    const d1 = new Date();
+
+    const url = new URL(window.location)
+    url.searchParams.set("search", query)
+    history.pushState(null, '', url)
+
     if (query.length == 0) {
       display.innerHTML = "";
+      searchStatus.innerHTML = ""
       return;
-    }
+    }    
 
     idxs = u.filter(haystack, query);
     info = u.info(idxs, haystack, query);
@@ -131,15 +139,20 @@ const main = async () => {
     // while(display.lastChild) display.removeChild(display.lastChild)
     display.replaceChildren();
     for (let res of results) display.appendChild(res[1]);
+    
+    const d2 = new Date();
+    searchStatus.innerHTML = `Found ${results.length} / ${order.length} results <span class="dt">(${d2-d1} ms)</span>`
   };
+
+  const wSearch = new URLSearchParams(window.location.search).get('search');
+  if(wSearch && wSearch.length > 0) {
+    search.value = wSearch
+    update(wSearch);
+  }
 
   search.addEventListener("input", (e) => {
     update(e.target.value);
   });
-};
-
-const query = (s) => {
-  console.log("query", s);
 };
 
 document.addEventListener("DOMContentLoaded", main);
