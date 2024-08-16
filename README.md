@@ -1,8 +1,16 @@
 # Bible
-Better search for the NRSVCE. 
+A lightweight, real-time search engine for the NRSVCE bible deployed at [bible.arulandu.com](https://bible.arulandu.com) by Alvan Arulandu.
 
-## Design Decisions
-- Footnotes are labeled w.r.t. the verse. 
+## Usage
+For local deploy, simply clone the repository and open `index.html` in you browser. Hot-reload with `npx live-server`. 
 
-## Things we found
-- Any book with a single chapter gets mishandled by BibleGateway such that Obadiah {x}:{y} will redirect to Obadiah 1:{x} when it should give an error. This is true for Obadiah, Philemon, 2 John, 3 John, and Jude. 
+## Implementation
+See `/data/main.json` for a JSON representation of the NRSVCE, scraped from BibleGateway in parallel with Python/Ruby scripts available in `/scripts`. We use [uFuzzy](https://github.com/leeoniya/uFuzzy) for fast, client-side search.  
+
+## Diagnostic
+Our engine runs in ~8-18ms per query. With enough traffic, we may switch to proper fuzzy search with Redis and a fast systems language (Rust/Go).
+
+During development, we found a bug in [biblegateway.com](https://biblegateway.com). For any single chapter book (Obadiah, Philemon, 2/3 John, Jude), searches of the form `{Book} {x}:{y}` redirect to `{Book} 1:{x}` instead of Not Found. This means that Obadiah 25:31 "exists"! The BibleGateway team has been alerted of this issue. 
+
+## References
+Thanks to `jgclark` for his BibleGateway scraping [tool](https://github.com/jgclark/BibleGateway-to-Markdown).
