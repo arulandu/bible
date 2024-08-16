@@ -101,10 +101,50 @@ main {
     width: 100%;
 }
 
-.display .heading {
+.display .result {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.result .expand {
+    position: relative;
+    color: var(--accent-color);
+    margin-left: 1rem;
+    cursor: pointer;
+}
+.result .expand::before {
+    content: '';
+    height: 4px;
+    width: 4px;
+    border-radius: 100%;
+    background-color: var(--accent-color);
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: -0.5rem;
+}
+
+.result.expanded {
+    flex-direction: column;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid black;
+}
+
+.result.expanded .vmark {
+    color: var(--accent-color);
+    font-weight: bold;
+    margin: 0px 3px;
+}
+
+.result .heading {
     /* font-weight: bold; */
     display: block;
     text-decoration: underline;
+}
+.result.expanded .heading {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .display mark {
@@ -113,11 +153,8 @@ main {
     text-decoration: none;
 }
 
-.display .result {
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column-reverse;
-}
+
+
 
 .result .ref {
     font-weight: lighter;
