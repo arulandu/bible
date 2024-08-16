@@ -49,7 +49,7 @@ const main = async () => {
       results[ind][1].querySelector(".ref span").innerHTML = `${x["book"]} ${x["chapter"]}`
       results[ind][1].querySelector('.expand').innerHTML = expandText[1]
       const ch = data["bible"].find((v) => v["book"] == x["book"])["chapters"].find((v) => v["chapter"] == x["chapter"])
-      const vs = ch["verses"].map((v) => `<span class="vmark">${v["verse"]}</span>`+sanitize(v["text"], ranges=(v["verse"] == x["verse"] ? info.ranges[order[ind]] : undefined))).join("")
+      const vs = ch["verses"].map((v) => (v["verse"] == 1 ? "" : `<span class="vmark">${v["verse"]}</span>`) + sanitize(v["text"], ranges=(v["verse"] == x["verse"] ? info.ranges[order[ind]] : undefined))).join("")
       results[ind][1].querySelector(".content").innerHTML = vs;
     }
   };
