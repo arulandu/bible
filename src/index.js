@@ -56,6 +56,7 @@ const main = async () => {
 
   const result = (x, ind, ranges=undefined, full=false) => {
     const h = sanitize(x["text"], ranges=ranges)
+    
     const btn = document.createElement("button");
     btn.setAttribute("class", "expand");
     btn.innerHTML = !full ? expandText[0] : expandText[1];
@@ -79,7 +80,9 @@ const main = async () => {
   };
 
   const sanitize = (text, ranges = undefined) => {
-    let h = (ranges ? uFuzzy.highlight(text, ranges) : text).split("");
+    let h = (ranges ? uFuzzy.highlight(text, ranges) : text);
+    h = h.replace(/<\/mark>\s+<mark>/g, " ").split("")
+
     let c = 0;
     for (let i = 0; i < h.length; i++) {
       if (h[i] == "|" && h[i + 1] == "|") {
@@ -110,7 +113,7 @@ const main = async () => {
       .replace(/#/g, "</i>")
       .replace(/(?<=\w)"(?=\w)/g, "'");
 
-    h = h.replace(/\\/g, "").replace(/\[\^\w\]/, ""); // TODO: process footnotes
+    h = h.replace(/\\/g, "").replace(/\[\^\w\]/g, ""); 
     return h;
   };
 
