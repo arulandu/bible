@@ -1,8 +1,14 @@
 # Bible
 A lightweight, real-time search engine for the NRSVCE bible deployed at [bible.arulandu.com](https://bible.arulandu.com) by Alvan Arulandu.
 
+<div align="center">
+<img src="https://github.com/user-attachments/assets/34601905-4ec2-4f7f-b4cf-3d7036afe14e" width="480px">
+</div>
+
 ## Usage
 For local deploy, simply clone the repository and open `index.html` in you browser. Hot-reload with `npx live-server`. 
+
+
 
 ## Implementation
 See `/data/main.json` for a JSON representation of the NRSVCE, scraped from BibleGateway in parallel with Python/Ruby scripts available in `/scripts`. We use [uFuzzy](https://github.com/leeoniya/uFuzzy) for fast, client-side search.  
